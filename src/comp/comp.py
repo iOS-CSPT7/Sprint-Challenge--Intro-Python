@@ -56,8 +56,8 @@ print(e)
 # age, for example ("David", 31), for everyone between the ages of 27 and 32,
 # inclusive.
 print("Names and ages between 27 and 32:")
-# f = [tuple([i.name, i.age]) for i in humans if i.age >= 27 and i.age<=32]
-f = [tuple([i.name, i.age]) for i in humans if i.age in range(27, 32)]
+f = [tuple([i.name, i.age]) for i in humans if i.age >= 27 and i.age<=32]
+# f = [tuple([i.name, i.age]) for i in humans if i.age in range(27, 32)]
 print(f)
 # for i in humans: 
 #     if i.age >= 27 & i.age <=32:
