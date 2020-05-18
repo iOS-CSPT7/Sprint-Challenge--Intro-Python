@@ -1,13 +1,14 @@
+from csv import DictReader
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
-class City: 
-  def __init__(self, name, latitude, longitude):
+class City(object): 
+  def __init__(self, name, lat, lon):
     self.name = name 
-    self.latitude = latitude
-    self.longitude = longitude
+    self.lat = lat
+    self.lon = lon
 
   def __str__(self):
-    return (f'city is {self.name}')
+    return f'city is {self.name}, {self.lat}, {self.lon}'
 # We have a collection of US cities with population over 750,000 stored in the
 # file "cities.csv". (CSV stands for "comma-separated values".)
 #
@@ -24,18 +25,20 @@ cities = []
 
 def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
-
+    reader =DictReader(open('cities.csv', 'r'))
   # For each city record, create a new City instance and add it to the 
   # `cities` list
-    
+    for i in reader: 
+      cities.append(City(i['city'], i['lat'], i['lng'])) 
     return cities
 
 cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
+# for c in range(len(cities)):
+#     print(cities[c].name, cities[c].lat, cities[c].lon)
 for c in cities:
-    print(c)
-
+	print(c)
 # STRETCH GOAL!
 #
 # Allow the user to input two points, each specified by latitude and longitude.
@@ -67,7 +70,7 @@ for c in cities:
 
 # TODO Get latitude and longitude values from the user
 
-def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
+'''def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # within will hold the cities that fall within the specified region
   within = []
 
@@ -76,3 +79,5 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # the specified coordinates.
 
   return within
+'''
+
